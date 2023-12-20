@@ -100,5 +100,6 @@ for cislo in delka_slov:
     else:
         cetnosti[cislo] = 1
 
-for cislo, pocet in cetnosti.items():
-    print(cislo,': ','*'*pocet)
+for cislo in sorted(cetnosti.keys()):
+    cetnost = cetnosti.get(cislo)
+    print(cislo,': ','*'*cetnost)
