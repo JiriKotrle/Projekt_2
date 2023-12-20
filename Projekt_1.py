@@ -63,8 +63,12 @@ else:
 
 print(oddelovac)
 
-upraveny_text = vybrany_text.split() # metoda split() rozdělí řetězec na jednotlivá slova a uloží je do seznamu
-print(upraveny_text)
+upraveny_text_znaky = vybrany_text.split() # metoda split() rozdělí řetězec na jednotlivá slova a uloží je do seznamu, slova ale obsahují i znaky (,;? atd.)
+upraveny_text = []
+for slovo in upraveny_text_znaky:
+    nove_slovo = ''.join([znak for znak in slovo if znak.isalnum()]) #odstranění znaků (isalnum() kontroluje, jestli je znak alfanumerický)
+    upraveny_text.append(nove_slovo)
+
 pocet_slov1 = len(upraveny_text)
 print(f'Celkový počet slov je: {pocet_slov1}')
 
@@ -93,6 +97,7 @@ print(oddelovac)
 #graf četnosti délek textu:
 cetnosti = {}
 delka_slov = [len(slovo) for slovo in upraveny_text]
+delka_slov_max = int(max(delka_slov))
 
 for cislo in delka_slov:
     if cislo in cetnosti:
@@ -100,6 +105,9 @@ for cislo in delka_slov:
     else:
         cetnosti[cislo] = 1
 
+print('LEN|','OCCURENCES'.center(10),'|NR.')
+print(oddelovac)
+
 for cislo in sorted(cetnosti.keys()):
     cetnost = cetnosti.get(cislo)
-    print(cislo,': ','*'*cetnost)
+    print(f"{cislo:3}|{'*'*cetnost:12}|{cetnost}")
