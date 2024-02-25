@@ -5,6 +5,9 @@
 
 import random
 import time
+import os
+
+os.system('cls') # čistí terminál s každým spuštěním
 oddelovac = '-'*40
 print(oddelovac)
 print('Ahoj, vítám tě u hry Bulls & Cows!')
@@ -25,7 +28,7 @@ while True:
     if len(set(number)) == 4:
         break
 
-print(number)
+# print(number)
     
 cas_zacatek = time.time() # Zaznamenání počátečního času
 opak = 0 # počet pokusů uhodnout
